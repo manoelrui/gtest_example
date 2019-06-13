@@ -2,7 +2,8 @@
 #include "complex.hpp"
 
 int main(int argc, char** argv) {
+  Complex c;
   std::cout << "Hey cmake" << std::endl;
-  std::cout << "The sum is: " << sum(2, 3) << std::endl;
+  std::cout << "The complex number is: " << c << std::endl;
   return 0;
 }
