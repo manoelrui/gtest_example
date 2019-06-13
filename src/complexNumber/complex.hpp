@@ -14,12 +14,14 @@ public:
   float getReal() const;
   float getIm() const;
   friend std::ostream& operator<<(std::ostream& os, const Complex& c) {
-    if(c.a_ == 0 && c.b_ == 0) {
+    if (c.a_ == 0 && c.b_ == 0) {
       os << "0";
     } else if (c.a_ == 0 && c.b_ != 0) {
       os << c.b_ << "i";
+    } else if (c.a_ != 0 && c.b_ == 0) {
+      os << c.a_;
     } else {
-      os << "";
+      os << c.a_ << "+" << c.b_ << "i";
     }
     return os;
   }

@@ -30,6 +30,22 @@ TEST(ComplexSuite, TestOutputStreamZeroReal) {
   EXPECT_TRUE(expected.compare(ss.str()) == 0);
 }
 
+TEST(ComplexSuite, TestOutputStreamZeroImaginary) {
+  Complex c {33, 0};
+  std::stringstream ss;
+  ss << c;
+  std::string expected{"33"};
+  EXPECT_TRUE(expected.compare(ss.str()) == 0);
+}
+
+TEST(ComplexSuite, TestOutputStreamNonZero) {
+  Complex c {7, 5};
+  std::stringstream ss;
+  ss << c;
+  std::string expected{"7+5i"};
+  EXPECT_TRUE(expected.compare(ss.str()) == 0);
+}
+
 int main(int argc, char* argv[]) {
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();  
