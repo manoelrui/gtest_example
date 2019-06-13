@@ -13,6 +13,7 @@ public:
 
   float getReal() const;
   float getIm() const;
+  
   friend std::ostream& operator<<(std::ostream& os, const Complex& c) {
     if (c.a_ == 0 && c.b_ == 0) {
       os << "0";
@@ -25,8 +26,28 @@ public:
     }
     return os;
   }
+  
+  friend Complex operator+(const Complex& c1, const Complex& c2) {
+    return {c1.a_ + c2.a_, c1.b_ + c2.b_};
+  }
+
+  friend Complex operator-(const Complex& c1, const Complex& c2) {
+    return {c1.a_ - c2.a_, c1.b_ - c2.b_};
+  }
+
+  friend Complex operator*(const Complex& c1, const Complex& c2) {
+    return {(c1.a_ * c2.a_) - (c1.b_ * c2.b_), (c1.a_ * c2.b_) + (c1.b_ * c2.a_)};
+  }
+  
+  friend Complex operator/(const Complex& c1, const Complex& c2) {
+    auto denominator = (c2.a_*c2.a_) + (c2.b_ * c2.b_);
+    return {
+      ((c1.a_ * c2.a_) + (c1.b_ * c2.b_))/denominator,
+      ((c1.a_ * c2.b_) - (c1.b_ * c2.a_))/denominator
+    };
+  }
+
 };
 
-int sum(int a, int b);
 
 #endif
