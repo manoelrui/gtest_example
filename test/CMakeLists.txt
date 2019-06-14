@@ -31,3 +31,4 @@ include_directories("${source_dir}/googletest/include"
   "${source_dir}/googlemock/include")
 
 add_subdirectory(complexNumber)
+add_subdirectory(vec2d)
